@@ -4,25 +4,28 @@
 // (As a stretch goal, you might want to prevent your user from "liking" the same post more than once.)
 import React from 'react';
 
-const LikeSection = props => {
+const LikeSection = (props) => {
   // 🔥 Make sure the parent of LikeSection is passing the right props!
   const { likePost, numberOfLikes } = props;
 
+  const handleLikeClick = () => {
+    // Call the likePost function passed from the parent component
+    likePost();
+  };
+
   return (
     <div>
-      <div
-        className='like-section'
-        key='likes-icons-container'
-      >
-        <div className='like-section-wrapper'>
-          ❤️
-        </div>
-        <div className='like-section-wrapper'>
-          💬
-        </div>
+    <div className='like-section' key='likes-icons-container'>
+      <div className='like-section-wrapper' onClick={handleLikeClick}>
+        ❤️
       </div>
-      <p className='like-number'>100 likes</p>
+      <div className='like-section-wrapper'>
+        💬
+      </div>
     </div>
+    <p className='like-number'>{numberOfLikes} likes</p>
+  </div>
+
   );
 };
 
